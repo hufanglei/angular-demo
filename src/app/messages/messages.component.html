@@ -1,0 +1,12 @@
+<div *ngIf="messageService.messages.length">
+
+  <h2>Messages</h2>
+  <!--这个模板直接绑定到了组件的 messageService 属性上。-->
+  <!--*ngIf 只有在有消息时才会显示消息区。-->
+  <!--*ngFor 用来在一系列 <div> 元素中展示消息列表。-->
+  <!--Angular 的事件绑定把按钮的 click 事件绑定到了 MessageService.clear()。-->
+  <button class="clear"
+          (click)="messageService.clear()">clear</button>
+  <div *ngFor='let message of messageService.messages'> {{message}} </div>
+
+</div>

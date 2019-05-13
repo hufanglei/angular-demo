@@ -1,0 +1,62 @@
+<!--
+
+&lt;!&ndash;[(ngModel)] 是 Angular 的双向数据绑定语法。&ndash;&gt;
+&lt;!&ndash;虽然 ngModel 是一个有效的 Angular 指令，不过它在默认情况下是不可用的。&ndash;&gt;
+&lt;!&ndash;它属于一个可选模块 FormsModule，你必须自行添加此模块才能使用该指令。&ndash;&gt;
+<div>
+  <label>name:
+    <input [(ngModel)]="hero.name" placeholder="name">
+  </label>
+</div>
+&lt;!&ndash;使用 UppercasePipe 进行格式化  uppercase 位于管道操作符（ | ）的右边，用来调用内置管道 UppercasePipe。&ndash;&gt;
+&lt;!&ndash; 管道 是格式化字符串、金额、日期和其它显示数据的好办法。 Angular 发布了一些内置管道，而且你还可以创建自己的管道。&ndash;&gt;
+<h2>{{hero.name  | uppercase}} Details</h2>
+<div><span>id: </span>{{hero.id}}</div>
+<div><span>name: </span>{{hero.name}}</div>
+
+-->
+
+
+
+<!--
+2.
+在顶部添加 <h2>，
+
+  然后添加表示无序列表的 HTML 元素（<ul>）
+
+  在 <ul> 中插入一个 <li> 元素，以显示单个 hero 的属性。
+
+ 点缀上一些 CSS 类（稍后你还会添加更多 CSS 样式）。
+-->
+<!--<h2>My Heroes</h2>-->
+<!--<ul class="heroes">-->
+  <!--<li *ngFor="let hero of heroes"-->
+      <!--[class.selected]="hero === selectedHero"-->
+      <!--(click)="onSelect(hero)">-->
+    <!--<span class="badge">{{hero.id}}</span> {{hero.name}}-->
+  <!--</li>-->
+<!--</ul>-->
+
+<h2>My Heroes</h2>
+
+<div>
+  <label>Hero name:
+    <input #heroName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(heroName.value); heroName.value=''">
+    add
+  </button>
+</div>
+
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
+    <button class="delete" title="delete hero"
+            (click)="delete(hero)">x</button>
+  </li>
+</ul>
+
+<!--<app-hero-detail [hero]="selectedHero"></app-hero-detail>-->
